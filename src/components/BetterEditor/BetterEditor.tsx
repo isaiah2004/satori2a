@@ -28,17 +28,6 @@ import { HiOutlineGlobeAlt } from "react-icons/hi";
 import { AiGenerate } from "./AIGenerate";
 // Our schema with inline content specs, which contain the configs and
 // implementations for inline content  that we want our editor to use.
-const schema = BlockNoteSchema.create({
-  inlineContentSpecs: {
-    // Adds all default inline content.
-    ...defaultInlineContentSpecs,
-    // Adds the mention tag.
-    //  DefaultReactSuggestionItem,
-    mention: AiGenerate,
-
-  },
-});
-
 // Function which gets all users for the mentions menu.
 const getMentionMenuItems = (
   editor: typeof schema.BlockNoteEditor
@@ -85,6 +74,7 @@ const insertHelloWorldItem = (editor: BlockNoteEditor) => ({
   icon: <HiOutlineGlobeAlt size={18} />,
   subtext: "Used to insert a block with 'Hello World' below.",
 });
+
 // List containing all default Slash Menu Items, as well as our custom one.
 const getCustomSlashMenuItems = (
   editor: BlockNoteEditor
@@ -93,7 +83,19 @@ const getCustomSlashMenuItems = (
   insertHelloWorldItem(editor),
 ];
 // ----------------------------------------------------------------------------
+const schema = BlockNoteSchema.create({
+  inlineContentSpecs: {
+    // Adds all default inline content.
+    ...defaultInlineContentSpecs,
+    // Adds the mention tag.
+    //  DefaultReactSuggestionItem,
+    // default: getCustomSlashMenuItems.,
+    mention: AiGenerate,
 
+  },
+});
+
+// ----------------------------------------------------------------------------
 export default function BetterEditor() {
   // Creates a new editor instance.
   const editor = useCreateBlockNote({
