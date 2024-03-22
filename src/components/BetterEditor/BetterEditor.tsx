@@ -22,6 +22,8 @@ import "@blocknote/react/style.css";
 import "./Beditor.css";
 
 import { HiOutlineGlobeAlt } from "react-icons/hi";
+import { AIInputForm } from "./InlineAIwindow";
+
 
 // ----------------------------------------------------------------------------
 // Custom @ Menu to use AI to generate a block with text
@@ -32,22 +34,20 @@ import { AiGenerate } from "./AIGenerate";
 const getMentionMenuItems = (
   editor: typeof schema.BlockNoteEditor
 ): DefaultReactSuggestionItem[] => {
-  const users = ["Steve", "Bob", "Joe", "Mike"];
-
-  return users.map((user) => ({
-    title: user,
-    onItemClick: () => {
-      editor.insertInlineContent([
-        {
-          type: "mention",
-          props: {
-            user,
-          },
-        },
-        " ", // add a space after the mention
-      ]);
+  return [{
+  title: "AI Generate",
+  onItemClick: () => {
+    editor.insertInlineContent([
+    {
+      type: "",
+      props: {
+      user: "AI Generate",
+      },
     },
-  }));
+    " ", // add a space after the mention
+    ]);
+  },
+  }];
 };
 
 // ----------------------------------------------------------------------------
@@ -90,7 +90,7 @@ const schema = BlockNoteSchema.create({
     // Adds the mention tag.
     //  DefaultReactSuggestionItem,
     // default: getCustomSlashMenuItems.,
-    mention: AiGenerate,
+    aiGenInline: AiGenerate,
 
   },
 });
@@ -123,7 +123,7 @@ export default function BetterEditor() {
   // Renders the editor instance using a React component.
   // Adds `data-theming-css-demo` to restrict styles to only this demo.
   return (
-    <BlockNoteView editor={editor} data-theming-css slashMenu={false}>
+    <BlockNoteView editor={editor} data-theming-css slashMenu={true}>
       {/* <SuggestionMenuController
         triggerCharacter={"/"}
         // Replaces the default Slash Menu items with our custom ones.

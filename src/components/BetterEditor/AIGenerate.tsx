@@ -1,5 +1,5 @@
 import { createReactInlineContentSpec } from "@blocknote/react";
- 
+import { AIInputForm } from "./InlineAIwindow";
 // The Mention inline content.
 export const AiGenerate = createReactInlineContentSpec(
   {
@@ -13,10 +13,11 @@ export const AiGenerate = createReactInlineContentSpec(
   },
   {
     render: (props) => (
-      <span style={{ backgroundColor: "#8400ff33" }}>
-        @{props.inlineContent.props.user}
-      </span>
+      <div>
+        <span style={{ backgroundColor: "#8400ff33" }}>
+          @{props.inlineContent.props.user}
+        </span>
+      </div>
     ),
   }
 );
- 

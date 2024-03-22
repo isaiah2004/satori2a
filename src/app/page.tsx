@@ -12,7 +12,7 @@ const BetterEditor = dynamic(
 //Import the chat-Layout
 import { ChatLayout } from "@/components/chat/chat-layout";
 
-import { Sidebar } from "@/components/Sidebar/SideBar";
+import { Sidebar } from "@/components/SidebarNav/SideBar";
 
 export default function App() {
   const layout = cookies().get("react-resizable-panels:layout");
