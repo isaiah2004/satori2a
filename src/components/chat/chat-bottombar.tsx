@@ -16,7 +16,8 @@ import { Message, loggedInUserData } from "@/app/data";
 import { Textarea } from "../ui/textarea";
 import { EmojiPicker } from "../chatUtils/emoji-picker";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-
+import fetchData from "@/components/chat/fetchData"; // Import the fetchData function
+import { appendNewMessage } from "@/app/data";
 interface ChatBottombarProps {
   sendMessage: (newMessage: Message) => void;
   isMobile: boolean;
@@ -45,22 +46,53 @@ export default function ChatBottombar({
     setMessage("");
   };
 
-  const handleSend = () => {
-    if (message.trim()) {
-      const newMessage: Message = {
+  const handleSend = async () => {
+  if (message.trim()) {
+    const data = {
+      model: 'gpt-3.5-turbo-instruct',
+      prompt: message.trim(), // Send the user input message as the prompt
+      temperature: 0.7,
+      max_tokens: 150
+    };
+
+    try {
+      // Fetch data from the OpenAI API
+      const responseData = await fetchData('https://api.openai.com/v1/completions', data);
+      // Extracting the text from the first choice
+      const generatedText = responseData.choices[0].text.trim();
+      console.log("Generated Response:", generatedText); // Log the generated response in the console
+
+      // Send the user's input message
+      const userMessage: Message = {
         id: message.length + 1,
         name: loggedInUserData.name,
         avatar: loggedInUserData.avatar,
         message: message.trim(),
       };
-      sendMessage(newMessage);
-      setMessage("");
+
+      // Send the generated message
+      const generatedMessage: Message = {
+        id: userMessage.id + 1, // Increment the message ID
+        name: loggedInUserData.name,
+        avatar: loggedInUserData.avatar,
+        message: generatedText,
+      };
+
+      // Call appendNewMessage for both userMessage and generatedMessage
+      appendNewMessage(message.trim(), true); // true for user message
+      appendNewMessage(generatedText, false); // false for generated message
+
+      setMessage(""); // Reset the message input field
 
       if (inputRef.current) {
         inputRef.current.focus();
       }
+    } catch (error) {
+      console.error('Error:', error);
     }
-  };
+  }
+};
+
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter" && !event.shiftKey) {

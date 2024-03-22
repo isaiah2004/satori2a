@@ -1,79 +1,70 @@
+export interface Message {
+  id: number;
+  name: string;
+  avatar: string;
+  message: string;
+}
+
+// Assuming this is the existing array of messages
+export const messages: Message[] = [
+  // Initial messages...
+];
+
+// Function to add a new message
+export const addMessage = (newMessage: string, isUserMessage: boolean) => {
+  const baseId = messages[messages.length - 1]?.id ?? 0; // Get the last id, or 0 if no messages
+  const newId = baseId + 1;
+
+  // Assuming id 1 and 2 have specific data you want to copy (adjust according to your actual structure)
+  const templateMessage = messages.find(m => m.id === (isUserMessage ? 1 : 2));
+
+  if (templateMessage) {
+    const { name, avatar } = templateMessage; // Extract other details you want to copy
+    const messageToAdd: Message = {
+      id: newId,
+      name,
+      avatar,
+      message: newMessage,
+    };
+    messages.push(messageToAdd); // Append the new message
+    }
+};
+
+// Function to append a new message to userData
+export const appendNewMessage = (newMessageText: string, isUserMessage: boolean) => {
+    const lastMessage = userData[0].messages[userData[0].messages.length - 1];
+    const newId = lastMessage.id + 1; // Generate a new ID based on the last message
+
+    const newMessage = {
+        id: newId,
+        avatar: isUserMessage ? '/User1.png' : '/ChatGPT.png', // Assuming avatars based on message origin
+        name: isUserMessage ? 'Jane Doe' : 'ChatGPT', // Assuming names based on message origin
+        message: newMessageText,
+    };
+
+    // Append the new message to the messages array
+    userData[0].messages.push(newMessage);
+};
+
 export const userData = [
     {
         id: 1,
-        avatar: '/User1.png',
-        messages: [
-            {
-                id: 1,
-                avatar: '/User1.png',
-                name: 'Jane Doe',
-                message: 'Hey, Jakob',
-            },
-            {
-                id: 2,
-                avatar: '/LoggedInUser.jpg',
-                name: 'Jakob Hoeg',
-                message: 'Hey!',
-            },
-            {
-                id : 3,
-                avatar: '/User1.png',
-                name: 'Jane Doe',
-                message: 'How are you?',
-            },
-            {
-                id: 4,
-                avatar: '/LoggedInUser.jpg',
-                name: 'Jakob Hoeg',
-                message: 'I am good, you?',
-            },
-            {
-                id: 5,
-                avatar: '/User1.png',
-                name: 'Jane Doe',
-                message: 'I am good too!',
-            },
-            {
-                id: 6,
-                avatar: '/LoggedInUser.jpg',
-                name: 'Jakob Hoeg',
-                message: 'That is good to hear!'
-            },
-            {
-                id: 7,
-                avatar: '/User1.png',
-                name: 'Jane Doe',
-                message: 'How has your day been so far?',
-            },
-            {
-                id: 8,
-                avatar: '/LoggedInUser.jpg',
-                name: 'Jakob Hoeg',
-                message: 'It has been good. I went for a run this morning and then had a nice breakfast. How about you?',
-            },
-            {
-                id: 9,
-                avatar: '/User1.png',
-                name: 'Jane Doe',
-                message: 'I had a relaxing day. Just catching up on some reading.',
-            }
-        ],
-        name: 'Jane Doe',
-    },
-    {
-        id: 2,
         avatar: '/ChatGPT.png',
         name: 'ChatGPT',
-    },
-    {
-        id: 3,
-        avatar: '/User3.png',
-        name: 'Elizabeth Smith',
-    },
-    {
-        id: 4,
-        avatar: '/User4.png',
-        name: 'John Smith',
+        messages: [
+            {
+                id : 1,
+                avatar: '/User1.png',
+                name: 'Jane Doe',
+                message: 'Hello GPT!!',
+            },
+            {
+                id : 2,
+                avatar: '/ChatGPT.png',
+                name: 'ChatGPT',
+                message: 'How may I help you today?',
+            },
+        ]
     }
 ];
 

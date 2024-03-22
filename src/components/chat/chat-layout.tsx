@@ -13,7 +13,7 @@ import {Sidebar} from "../Sidebar/SideBar";
 
 
 export function ChatLayout() {
-  const [selectedUser, setSelectedUser] = React.useState(userData[1]);
+  const [selectedUser, setSelectedUser] = React.useState(userData[0]);
   const [isMobile, setIsMobile] = useState(false);
 
   return (
@@ -25,6 +25,6 @@ export function ChatLayout() {
           isMobile={isMobile}
         />
     </div>
-    
+
   );
 }
