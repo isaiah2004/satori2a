@@ -6,10 +6,6 @@ import React, {  useState } from "react";
 import { cn } from "@/lib/utils";
 import { Chat } from "./chat";
 
-import dynamic from "next/dynamic";
-// import {Sidebar} from "../SidebarNav/SideBar";
-
-// const BetterEditor = dynamic(() => import("../BetterEditor/BetterEditor"), { ssr: false });
 
 
 export function ChatLayout() {

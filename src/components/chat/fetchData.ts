@@ -1,11 +1,12 @@
 async function fetchData(url: string, data: any): Promise<any> {
   try {
+    let apikey = process.env.OPENAI_API_KEY;
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         // Replace 'YOUR_API_KEY' with your actual OpenAI API key
-        'Authorization': 'Bearer API_KEY'
+        'Authorization': `Bearer ${apikey}`
       },
       body: JSON.stringify(data)
     });

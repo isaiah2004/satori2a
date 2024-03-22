@@ -22,12 +22,6 @@ export default function App() {
       className="w-screen h-screen"
       style={{ backgroundImage: "url(bgImg.png)" }}
     >
-      {/* <div className="flex h-[calc(100dvh)] flex-col items-center justify-center p-4 md:px-24 py-32 gap-4">
-        <div className="z-10 border rounded-lg max-w-5xl w-full h-full text-sm lg:flex">
-          <ChatLayout />
-        </div>
-      </div> */}
-
       <div className="grid grid-cols-5 grid-rows-8 gap-4 h-screen w-screen p-5">
         <div className="col-span-3 shad">2</div>
         <div className="col-start-5 shad">3</div>
@@ -35,8 +29,10 @@ export default function App() {
           <Sidebar />
         </div>
         <div className="row-span-2 col-start-1 row-start-7 shad cid-5">5</div>
-        <div className="col-span-3 row-span-6 col-start-2 row-start-2 overflow-auto p-2 shad cid-6 rounded-xl">
-          <BetterEditor />
+        <div className="overflow-y-auto col-span-3 row-span-6 col-start-2 row-start-2 p-2 shad cid-6 rounded-xl">
+          <div>
+            <BetterEditor />
+          </div>
         </div>
         <div className="row-span-5 col-start-5 row-start-2 cid-7 shad">
           <ChatLayout />
