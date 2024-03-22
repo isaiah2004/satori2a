@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Message, loggedInUserData } from "@/app/data";
 import { Textarea } from "../ui/textarea";
-import { EmojiPicker } from "../emoji-picker";
+import { EmojiPicker } from "../chatUtils/emoji-picker";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 interface ChatBottombarProps {
@@ -90,12 +90,12 @@ export default function ChatBottombar({
           <PlusCircle size={20} className="text-muted-foreground" />
         </Link>
             </PopoverTrigger>
-            <PopoverContent 
+            <PopoverContent
             side="top"
             className="w-full p-2">
              {message.trim() || isMobile ? (
                <div className="flex gap-2">
-                <Link 
+                <Link
               href="#"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
@@ -120,7 +120,7 @@ export default function ChatBottombar({
                ))}
              </div>
              ) : (
-              <Link 
+              <Link
               href="#"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
@@ -201,17 +201,18 @@ export default function ChatBottombar({
             <SendHorizontal size={20} className="text-muted-foreground" />
           </Link>
         ) : (
-          <Link
-            href="#"
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "icon" }),
-              "h-9 w-9",
-              "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white shrink-0"
-            )}
-            onClick={handleThumbsUp}
-          >
-            <ThumbsUp size={20} className="text-muted-foreground" />
-          </Link>
+          // <Link
+          //   href="#"
+          //   className={cn(
+          //     buttonVariants({ variant: "ghost", size: "icon" }),
+          //     "h-9 w-9",
+          //     "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white shrink-0"
+          //   )}
+          //   onClick={handleThumbsUp}
+          // >
+          //   {/* <ThumbsUp size={20} className="text-muted-foreground" /> */}
+          // </Link>
+          <p></p>
         )}
       </AnimatePresence>
     </div>

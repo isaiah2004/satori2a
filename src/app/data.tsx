@@ -62,8 +62,8 @@ export const userData = [
     },
     {
         id: 2,
-        avatar: '/User2.png',
-        name: 'John Doe',
+        avatar: '/ChatGPT.png',
+        name: 'ChatGPT',
     },
     {
         id: 3,
