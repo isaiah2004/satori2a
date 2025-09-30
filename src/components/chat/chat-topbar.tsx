@@ -17,34 +17,35 @@ interface ChatTopbarProps {
 
 export default function ChatTopbar({selectedUser}: ChatTopbarProps) {
   return (
-    <div className="w-full h-20 flex p-4 justify-between items-center border-b bg-[#0d0d0d99] backdrop-filter backdrop-blur-sm bg-opacity-10">
-        <div className="flex items-center gap-2">
-          <Avatar className="flex justify-center items-center">
+    <div className="w-full h-20 flex p-4 justify-between items-center border-b border-gray-600/50 bg-transparent">
+        <div className="flex items-center gap-3">
+          <Avatar className="flex justify-center items-center border-2 border-gray-500">
             <AvatarImage
               src={selectedUser.avatar}
               alt={selectedUser.name}
               width={6}
               height={6}
-              className="w-10 h-10 "
+              className="w-10 h-10"
             />
           </Avatar>
           <div className="flex flex-col">
-            <span className="font-medium">{selectedUser.name}</span>
+            <span className="font-semibold text-white">{selectedUser.name}</span>
+            <span className="text-xs text-green-400 font-medium">AI Assistant</span>
           </div>
         </div>
 
-        <div>
+        <div className="flex gap-1">
           {TopbarIcons.map((icon, index) => (
             <Link
               key={index}
               href="#"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
-                "h-9 w-9",
-                "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
+                "h-9 w-9 rounded-xl",
+                "hover:bg-white/10 text-gray-300 hover:text-white transition-all duration-200"
               )}
             >
-              <icon.icon size={20} className="text-muted-foreground" />
+              <icon.icon size={20} />
             </Link>
           ))}
         </div>

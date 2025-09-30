@@ -107,7 +107,7 @@ export default function ChatBottombar({
   };
 
   return (
-    <div className="p-2 flex justify-between w-full items-center gap-2">
+    <div className="p-3 flex justify-between w-full items-center gap-2 border-t border-gray-600/50 bg-transparent">
       <div className="flex">
           <Popover>
             <PopoverTrigger asChild>
@@ -115,27 +115,27 @@ export default function ChatBottombar({
           href="#"
           className={cn(
             buttonVariants({ variant: "ghost", size: "icon" }),
-            "h-9 w-9",
-            "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
+            "h-9 w-9 rounded-xl",
+            "hover:bg-white/10 text-gray-300 hover:text-white transition-all duration-200"
           )}
         >
-          <PlusCircle size={20} className="text-muted-foreground" />
+          <PlusCircle size={20} />
         </Link>
             </PopoverTrigger>
             <PopoverContent
             side="top"
-            className="w-full p-2">
+            className="w-full p-2 bg-gray-800 border-gray-600 rounded-xl">
              {message.trim() || isMobile ? (
                <div className="flex gap-2">
                 <Link
               href="#"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
-                "h-9 w-9",
-                "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
+                "h-9 w-9 rounded-xl",
+                "hover:bg-white/10 text-gray-300 hover:text-white transition-all duration-200"
               )}
               >
-                <Mic size={20} className="text-muted-foreground" />
+                <Mic size={20} />
               </Link>
                {BottombarIcons.map((icon, index) => (
                  <Link
@@ -143,11 +143,11 @@ export default function ChatBottombar({
                    href="#"
                    className={cn(
                      buttonVariants({ variant: "ghost", size: "icon" }),
-                     "h-9 w-9",
-                     "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
+                     "h-9 w-9 rounded-xl",
+                     "hover:bg-white/10 text-gray-300 hover:text-white transition-all duration-200"
                    )}
                  >
-                   <icon.icon size={20} className="text-muted-foreground" />
+                   <icon.icon size={20} />
                  </Link>
                ))}
              </div>
@@ -156,11 +156,11 @@ export default function ChatBottombar({
               href="#"
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
-                "h-9 w-9",
-                "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
+                "h-9 w-9 rounded-xl",
+                "hover:bg-white/10 text-gray-300 hover:text-white transition-all duration-200"
               )}
               >
-                <Mic size={20} className="text-muted-foreground" />
+                <Mic size={20} />
               </Link>
              )}
             </PopoverContent>
@@ -173,11 +173,11 @@ export default function ChatBottombar({
                 href="#"
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "icon" }),
-                  "h-9 w-9",
-                  "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
+                  "h-9 w-9 rounded-xl",
+                  "hover:bg-white/10 text-gray-300 hover:text-white transition-all duration-200"
                 )}
               >
-                <icon.icon size={20} className="text-muted-foreground" />
+                <icon.icon size={20} />
               </Link>
             ))}
           </div>
@@ -207,8 +207,8 @@ export default function ChatBottombar({
             onKeyDown={handleKeyPress}
             onChange={handleInputChange}
             name="message"
-            placeholder="Aa"
-            className=" w-full border rounded-full flex items-center h-9 resize-none overflow-hidden bg-background"
+            placeholder="Type a message..."
+            className="w-full border border-gray-600 rounded-2xl flex items-center h-10 resize-none overflow-hidden bg-gray-800/50 text-white placeholder:text-gray-400 focus:border-blue-500 transition-all duration-200"
           ></Textarea>
           <div className="absolute right-2 bottom-0.5  ">
             <EmojiPicker onChange={(value) => {
@@ -225,25 +225,14 @@ export default function ChatBottombar({
             href="#"
             className={cn(
               buttonVariants({ variant: "ghost", size: "icon" }),
-              "h-9 w-9",
-              "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white shrink-0"
+              "h-9 w-9 rounded-xl",
+              "hover:bg-blue-600 bg-blue-500 text-white hover:text-white shrink-0 transition-all duration-200"
             )}
             onClick={handleSend}
           >
-            <SendHorizontal size={20} className="text-muted-foreground" />
+            <SendHorizontal size={20} />
           </Link>
         ) : (
-          // <Link
-          //   href="#"
-          //   className={cn(
-          //     buttonVariants({ variant: "ghost", size: "icon" }),
-          //     "h-9 w-9",
-          //     "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white shrink-0"
-          //   )}
-          //   onClick={handleThumbsUp}
-          // >
-          //   {/* <ThumbsUp size={20} className="text-muted-foreground" /> */}
-          // </Link>
           <p></p>
         )}
       </AnimatePresence>

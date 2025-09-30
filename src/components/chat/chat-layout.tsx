@@ -13,7 +13,7 @@ export function ChatLayout() {
   const [isMobile, setIsMobile] = useState(false);
 
   return (
-    <div className="flex flex-row h-full rounded-lg overflow-hidden">
+    <div className="flex flex-row h-full rounded-lg overflow-hidden" style={{backgroundColor: '#0d0d0d99'}}>
       {/* <Sidebar/> */}
       <Chat
           messages={selectedUser.messages}

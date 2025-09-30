@@ -15,7 +15,7 @@ export function SidebarButton({
   return (
     <Button
       variant='ghost'
-      className={cn('gap-2 justify-start', className)}
+      className={cn('gap-2 justify-start rounded-xl hover:bg-white/10 text-gray-200 hover:text-white transition-all duration-200', className)}
       {...props}
     >
       {Icon && <Icon size={20} />}

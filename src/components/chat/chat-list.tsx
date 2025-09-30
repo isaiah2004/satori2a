@@ -28,10 +28,10 @@ export function ChatList({
   }, [messages]);
 
   return (
-    <div className="w-full overflow-y-auto overflow-x-hidden h-full flex flex-col bg-[#0d0d0d99] ">
+    <div className="w-full overflow-y-auto overflow-x-hidden h-full flex flex-col bg-transparent">
       <div
         ref={messagesContainerRef}
-        className="w-full overflow-y-auto overflow-x-hidden h-full flex flex-col"
+        className="w-full overflow-y-auto overflow-x-hidden h-full flex flex-col p-2"
       >
         <AnimatePresence>
           {messages?.map((message, index) => (
@@ -54,31 +54,38 @@ export function ChatList({
                 originY: 0.5,
               }}
               className={cn(
-                "flex flex-col gap-2 p-4 whitespace-pre-wrap",
+                "flex flex-col gap-2 p-3 whitespace-pre-wrap",
                 message.name !== selectedUser.name ? "items-end" : "items-start"
               )}
             >
-              <div className="flex gap-3 items-center">
+              <div className="flex gap-3 items-end max-w-[80%]">
                 {message.name === selectedUser.name && (
-                  <Avatar className="flex justify-center items-center">
+                  <Avatar className="flex justify-center items-center border border-gray-500 flex-shrink-0">
                     <AvatarImage
                       src={message.avatar}
                       alt={message.name}
                       width={6}
                       height={6}
+                      className="w-8 h-8"
                     />
                   </Avatar>
                 )}
-                <span className=" bg-accent p-3 rounded-md max-w-xs">
-                  {message.message}
-                </span>
+                <div className={cn(
+                  "p-3 rounded-2xl max-w-xs break-words",
+                  message.name === selectedUser.name 
+                    ? "bg-gray-700/80 text-white rounded-bl-md" 
+                    : "bg-blue-600/90 text-white rounded-br-md"
+                )}>
+                  <span className="text-sm leading-relaxed">{message.message}</span>
+                </div>
                 {message.name !== selectedUser.name && (
-                  <Avatar className="flex justify-center items-center">
+                  <Avatar className="flex justify-center items-center border border-gray-500 flex-shrink-0">
                     <AvatarImage
                       src={message.avatar}
                       alt={message.name}
                       width={6}
                       height={6}
+                      className="w-8 h-8"
                     />
                   </Avatar>
                 )}
