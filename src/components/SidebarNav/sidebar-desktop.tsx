@@ -10,6 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { LogOut, MoreHorizontal, Settings, User } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { loggedInUserData } from '@/app/data';
+import { cn } from '@/lib/utils';
 
 interface SidebarDesktopProps {
   sidebarItems: SidebarItems;
@@ -19,7 +20,7 @@ export function SidebarDesktop(props: SidebarDesktopProps) {
   const pathname = usePathname();
 
   return (
-    <aside className='w-full h-full left-0 top-0 z-40 bg-[#0d0d0d99] text-white'>
+    <aside className='w-full h-full left-0 top-0 z-40 bg-[#0d0d0dcf] text-white'>
       <div className='h-full px-3 py-4'>
         {/* App Title */}
         <div className='mb-6 px-2'>
@@ -34,7 +35,12 @@ export function SidebarDesktop(props: SidebarDesktopProps) {
                 <SidebarButton
                   variant={pathname === link.href ? 'secondary' : 'ghost'}
                   icon={link.icon}
-                  className='w-full justify-start'
+                  className={cn(
+                    'w-full justify-start',
+                    pathname === link.href && link.label === 'All Notes' 
+                      ? 'bg-gray-700 text-white hover:bg-white hover:text-gray-900' 
+                      : ''
+                  )}
                 >
                   {link.label}
                 </SidebarButton>

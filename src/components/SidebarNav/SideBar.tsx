@@ -47,7 +47,7 @@ const sidebarItems: SidebarItems = {
         Settings
       </SidebarButton>
       <SidebarButton
-        className='w-full justify-center text-white bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold py-2 transition-all duration-200'
+        className='w-full justify-center text-gray-900 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold py-2 transition-all duration-200'
         variant='default'
         icon={Plus}
       >
